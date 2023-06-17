@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TicketController;
+use App\Http\Controllers\ConcertController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +22,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/concert', [ConcertController::class, 'getConcert'])->name('concert');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/ticket', [TicketController::class, 'getMyTicket'])->name('myTicket');
+    Route::post('/ticket/buy', [TicketController::class, 'buyTicket'])->name('buyTicket');
+});
