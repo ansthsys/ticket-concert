@@ -20,9 +20,41 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('administrator'),
         ]);
 
-        \App\Models\Concert::create([
-            'name' => 'Impacnation 2023',
-            'scheduled_date' => date('Y-m-d', strtotime('26-08-2023')),
+        \App\Models\Concert::insert([
+            [
+                'name' => 'Impacnation 2023',
+                'scheduled_date' => date('Y-m-d', strtotime('26-08-2023')),
+            ],
+            [
+                'name' => 'Blackpink 2024',
+                'scheduled_date' => date('Y-m-d', strtotime('26-08-2024')),
+            ],
+            [
+                'name' => 'Berdendang Bergoyang Festival',
+                'scheduled_date' => date('Y-m-d', strtotime('26-08-2024')),
+            ],
+            [
+                'name' => 'Java Jazz Festival 2024',
+                'scheduled_date' => date('Y-m-d', strtotime('26-08-2024')),
+            ],
+            [
+                'name' => 'Head in the Clouds Indonesia',
+                'scheduled_date' => date('Y-m-d', strtotime('26-08-2024')),
+            ],
+            [
+                'name' => 'The 10th Music Gallery 2024',
+                'scheduled_date' => date('Y-m-d', strtotime('26-08-2024')),
+            ],
+            [
+                'name' => 'Hammersonic Festival 2024',
+                'scheduled_date' => date('Y-m-d', strtotime('26-08-2024')),
+            ]
+        ]);
+
+        \App\Models\Ticket::create([
+            'user_id' => 1,
+            'concert_id' => 1,
+            'code' => uniqid('TIX' . rand(1000, 9999) . '-', true)
         ]);
     }
 }
