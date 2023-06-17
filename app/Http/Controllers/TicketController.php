@@ -22,4 +22,13 @@ class TicketController extends Controller
 
         return redirect()->route('myTicket');
     }
+
+    public function getMyTicket()
+    {
+        $tickets = Ticket::with('concert')->where('user_id', Auth::id())->get();
+
+        return view('ticket', [
+            'tickets' => $tickets
+        ]);
+    }
 }
