@@ -25,4 +25,13 @@ class ManagementController extends Controller
             'ticket' => $ticket,
         ]);
     }
+
+    public function updateSingleBuyer(Request $request, $id)
+    {
+        $res = Ticket::find($id);
+        $res->is_used = $request->is_used == 'true' ? 1 : 0;
+        $res->save();
+
+        return redirect()->to('buyer');
+    }
 }
