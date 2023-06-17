@@ -34,4 +34,24 @@ class ManagementController extends Controller
 
         return redirect()->to('buyer');
     }
+
+    public function getProcess()
+    {
+        return view('process');
+    }
+
+    public function postProcess(Request $request)
+    {
+        $code = $request->code;
+        $res = Ticket::where('code', $code)->first();
+
+        if ($res->is_used == true) {
+            return redirect()->back()->with('error', '*This ticket is already used!');
+        }
+
+        $res->is_used = true;
+        $res->save();
+
+        return redirect()->to('process');
+    }
 }
