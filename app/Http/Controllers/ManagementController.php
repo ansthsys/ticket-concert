@@ -16,4 +16,13 @@ class ManagementController extends Controller
             'res' => $res
         ]);
     }
+
+    public function getSingleBuyer($id)
+    {
+        $ticket = Ticket::where('id', $id)->first();
+
+        return view('buyer-edit', [
+            'ticket' => $ticket,
+        ]);
+    }
 }
