@@ -25,7 +25,7 @@ class TicketController extends Controller
 
     public function getMyTicket()
     {
-        $tickets = Ticket::with('concert')->where('user_id', Auth::id())->get();
+        $tickets = Ticket::with('concert')->where('user_id', Auth::id())->where('is_used', false)->get();
 
         return view('ticket', [
             'tickets' => $tickets
