@@ -7,7 +7,7 @@
     <div class="card mb-3 mx-auto" style="width: 32rem; height: 12rem;">
         <div class="card-body">
         <h2 class="card-title">{{$item->name}}</h2>
-        <p class="card-text">{{$item->scheduled_date}}</p>
+        <h5 class="card-text">live in {{$item->scheduled_date}}</h5>
         <form id="{{ $item->name }}" method="post" action="{{ route('buyTicket') }}">
             @csrf 
             <input type="hidden" name="concert_id" value="{{ $item->id }}" /> 
