@@ -19,5 +19,10 @@ class DatabaseSeeder extends Seeder
             'role' => 'admin',
             'password' => Hash::make('administrator'),
         ]);
+
+        \App\Models\Concert::create([
+            'name' => 'Impacnation 2023',
+            'scheduled_date' => date('Y-m-d', strtotime('26-08-2023')),
+        ]);
     }
 }
